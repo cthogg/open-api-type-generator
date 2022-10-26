@@ -1,11 +1,19 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.11.6
   esbuild: ^0.14.38
   typescript: ^4.5.3
   vitest: ^0.10.0
+  yaml: ^2.1.3
+  zod: ^3.19.1
+
+dependencies:
+  yaml: 2.1.3
+  zod: 3.19.1
 
 devDependencies:
+  '@types/node': 18.11.6
   esbuild: 0.14.54
   typescript: 4.8.4
   vitest: 0.10.5
@@ -29,6 +37,10 @@ packages:
 
   /@types/chai/4.3.3:
     resolution: {integrity: sha512-hC7OMnszpxhZPduX+m+nrx+uFoLkWOMiR4oa/AZF3MuSETYTZmFfJAHqZEM8MVlvfG7BEUcgvtwoCTxBp6hm3g==}
+    dev: true
+
+  /@types/node/18.11.6:
+    resolution: {integrity: sha512-j3CEDa2vd96K0AXF8Wur7UucACvnjkk8hYyQAHhUNciabZLDl9nfAEVUSwmh245OOZV15bRA3Y590Gi5jUcDJg==}
     dev: true
 
   /assertion-error/1.1.0:
@@ -438,3 +450,12 @@ packages:
       - sass
       - stylus
     dev: true
+
+  /yaml/2.1.3:
+    resolution: {integrity: sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==}
+    engines: {node: '>= 14'}
+    dev: false
+
+  /zod/3.19.1:
+    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: false
