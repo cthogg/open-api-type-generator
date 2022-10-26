@@ -1,3 +1,3 @@
-const me = 'me'
+import { printHelloWorld } from "./helloWorld";
 
-export {me}
+export { printHelloWorld };
