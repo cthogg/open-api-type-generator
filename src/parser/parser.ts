@@ -1,12 +1,14 @@
 import { MOCK_PATH } from "./consts";
-import { generateZodFromTs } from "./parseTsFileToEndpoints";
-import { getAndValidateFile } from "./parseYamlFile";
-import { writeYamlFileToTs } from "./writeYamlFileToTs";
+import { getAndValidateFile } from "./getAndValidateFile";
+import { OpenApi } from "./openApiTypes";
+import { generateEndpoints } from "./validateParsedStructure";
 
 const program = async () => {
-  await getAndValidateFile(MOCK_PATH);
-  await writeYamlFileToTs();
-  await generateZodFromTs();
+  const file: OpenApi = await getAndValidateFile(MOCK_PATH);
+  const endpoints = generateEndpoints(file);
+  //write endpoints to a file
+  // write endpoint file to ts file.
+  return endpoints;
 };
 
 export { program };

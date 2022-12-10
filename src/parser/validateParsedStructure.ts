@@ -1,17 +1,6 @@
-import SwaggerParser from "@apidevtools/swagger-parser";
 import { z } from "zod";
+import { OpenApi, SchemaArray } from "./openApiTypes";
 
-const isValidOpenApiSpec = async (fileAsJson: string) => {
-  console.log("fileAsJson", fileAsJson);
-  try {
-    await SwaggerParser.parse(fileAsJson);
-    return true;
-  } catch (err) {
-    //FIXME: add a logger for this
-    console.error(err);
-    return false;
-  }
-};
 const exampleFileAsJson = {
   openapi: "3.0.0",
   info: {
@@ -66,50 +55,20 @@ const exampleFileAsJson = {
   },
 };
 
-const infoSchema = z.object({
-  version: z.string(),
-  title: z.string(),
-  description: z.string(),
-});
-
-const getArraySchema = z.object({
-  type: z.literal("array"),
-  items: z.object({
-    type: z.literal("object"),
-    required: z.array(z.string()),
-    properties: z.record(z.string(), z.object({ type: z.string() })),
-  }),
-});
-
-const openApiSchema = z.object({
-  openapi: z.string().startsWith("3."),
-  info: infoSchema,
-  paths: z.record(
-    z.string().startsWith("/"),
-    z.object({
-      get: z.object({
-        description: z.string(),
-        responses: z.object({
-          "200": z.object({
-            description: z.string(),
-            content: z.object({
-              "application/json": z.object({
-                schema: getArraySchema,
-              }),
-            }),
-          }),
-        }),
-      }),
-    })
-  ),
-});
-
-type NonSpecitifcSpec = z.infer<typeof openApiSchema>;
-type SchemaArray = z.infer<typeof getArraySchema>;
-
 type Endpoint = {
   endpoint: string;
   responseBody: z.ZodType;
+};
+
+const getZodType = (type: string): z.ZodType => {
+  switch (type) {
+    case "string":
+      return z.string();
+    case "integer":
+      return z.number();
+    default:
+      return z.unknown();
+  }
 };
 
 const generateResponseBodyOfArray = (schema: SchemaArray): z.ZodType => {
@@ -117,13 +76,16 @@ const generateResponseBodyOfArray = (schema: SchemaArray): z.ZodType => {
   const listOfPropertiesKeys = Object.keys(listOfProperties).map((key) => {
     const property = listOfProperties[key];
     return {
-      [key]: property,
+      [key]: getZodType(property.type),
     };
   });
-  return z.object({});
+  const mergedListOfPropertyKeys = listOfPropertiesKeys.reduce((acc, curr) => {
+    return { ...acc, ...curr };
+  });
+  return z.object(mergedListOfPropertyKeys);
 };
 
-const generateAllEndpoints = (spec: NonSpecitifcSpec): Endpoint[] => {
+export const generateEndpoints = (spec: OpenApi): Endpoint[] => {
   const allGetEndpoints: Endpoint[] = Object.keys(spec.paths).map((path) => {
     const pathObject = spec.paths[path];
     const schema =
@@ -136,10 +98,3 @@ const generateAllEndpoints = (spec: NonSpecitifcSpec): Endpoint[] => {
   });
   return allGetEndpoints;
 };
-
-export const generateEndpoints = (fileAsJson: string): Endpoint[] => {
-  const files = openApiSchema.parse(fileAsJson);
-  return generateAllEndpoints(files);
-};
-
-export { isValidOpenApiSpec };

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getAndValidateFile } from "../parser/parseYamlFile";
 import { MOCK_PATH } from "./consts";
+import { getAndValidateFile } from "./getAndValidateFile";
 import { program } from "./parser";
 
 describe("parser tests", () => {
