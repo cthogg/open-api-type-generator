@@ -1,4 +1,16 @@
+import SwaggerParser from "@apidevtools/swagger-parser";
 import { z } from "zod";
+
+const isValidOpenApiSpec = async (fileAsJson: any) => {
+  try {
+    await SwaggerParser.parse(fileAsJson);
+    return true;
+  } catch (err) {
+    //FIXME: add a logger for this
+    console.error(err);
+    return false;
+  }
+};
 
 const OpenApiSpec = z.object({
   openapi: z.string().startsWith("3."), //only supporting open api version 3 at the moment // could provide custom errors to show this with https://github.com/colinhacks/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap
@@ -22,4 +34,4 @@ const OpenApiSpec = z.object({
 
 type OpenApiSpecType = z.infer<typeof OpenApiSpec>;
 
-export { OpenApiSpec, OpenApiSpecType };
+export { OpenApiSpec, OpenApiSpecType, isValidOpenApiSpec };
