@@ -1,7 +1,8 @@
 import SwaggerParser from "@apidevtools/swagger-parser";
 import { z } from "zod";
 
-const isValidOpenApiSpec = async (fileAsJson: any) => {
+const isValidOpenApiSpec = async (fileAsJson: string) => {
+  console.log("fileAsJson", fileAsJson);
   try {
     await SwaggerParser.parse(fileAsJson);
     return true;

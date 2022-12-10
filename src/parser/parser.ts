@@ -1,8 +1,9 @@
-import { fileAsJson } from "./parseYamlFile";
+import { MOCK_PATH } from "./consts";
+import { getAndValidateFile } from "./parseYamlFile";
 import { writeTsSchemaToFile, writeYamlFileToTs } from "./writeYamlFileToTs";
 
 const program = async () => {
-  const jsonObject = await fileAsJson;
+  const jsonObject = await getAndValidateFile(MOCK_PATH);
   const typeFileString = await writeYamlFileToTs();
   writeTsSchemaToFile(typeFileString);
 };
