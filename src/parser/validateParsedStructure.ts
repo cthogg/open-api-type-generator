@@ -66,13 +66,13 @@ const exampleFileAsJson = {
   },
 };
 
-const Info = z.object({
+const infoSchema = z.object({
   version: z.string(),
   title: z.string(),
   description: z.string(),
 });
 
-const schemaArray = z.object({
+const getArraySchema = z.object({
   type: z.literal("array"),
   items: z.object({
     type: z.literal("object"),
@@ -81,9 +81,9 @@ const schemaArray = z.object({
   }),
 });
 
-const nonSpecificSpec = z.object({
+const openApiSchema = z.object({
   openapi: z.string().startsWith("3."),
-  info: Info,
+  info: infoSchema,
   paths: z.record(
     z.string().startsWith("/"),
     z.object({
@@ -94,7 +94,7 @@ const nonSpecificSpec = z.object({
             description: z.string(),
             content: z.object({
               "application/json": z.object({
-                schema: schemaArray,
+                schema: getArraySchema,
               }),
             }),
           }),
@@ -104,26 +104,15 @@ const nonSpecificSpec = z.object({
   ),
 });
 
-type NonSpecitifcSpec = z.infer<typeof nonSpecificSpec>;
-type SchemaArray = z.infer<typeof schemaArray>;
-// {
-//   endpoint: "GET /artists",
-//   responseBody: r.Array(
-//     r.Record({
-//       username: r.String,
-//       artist_name: r.String.optional(),
-//       artist_genre: r.String.optional(),
-//       albums_recorded: r.Number.optional(),
-//     })
-//   ),
-// }
+type NonSpecitifcSpec = z.infer<typeof openApiSchema>;
+type SchemaArray = z.infer<typeof getArraySchema>;
 
 type Endpoint = {
   endpoint: string;
   responseBody: z.ZodType;
 };
 
-const generateZodFromSchema = (schema: SchemaArray): z.ZodType => {
+const generateResponseBodyOfArray = (schema: SchemaArray): z.ZodType => {
   const listOfProperties = schema.items.properties;
   const listOfPropertiesKeys = Object.keys(listOfProperties).map((key) => {
     const property = listOfProperties[key];
@@ -131,42 +120,26 @@ const generateZodFromSchema = (schema: SchemaArray): z.ZodType => {
       [key]: property,
     };
   });
-  console.log("listOfPropertiesKeys", listOfPropertiesKeys);
   return z.object({});
 };
 
-const generateZodPaths = (spec: NonSpecitifcSpec): Endpoint[] => {
-  const allPaths = spec.paths;
-  const allPathsKeys: Endpoint[] = Object.keys(allPaths).map((path) => {
-    const pathObject = allPaths[path];
-    const pathSchema: z.ZodType = nonSpecificSpec.shape.paths.keySchema;
+const generateAllEndpoints = (spec: NonSpecitifcSpec): Endpoint[] => {
+  const allGetEndpoints: Endpoint[] = Object.keys(spec.paths).map((path) => {
+    const pathObject = spec.paths[path];
     const schema =
       pathObject.get.responses["200"].content["application/json"].schema;
     const endpoint: Endpoint = {
       endpoint: `GET ${path}`,
-      responseBody: generateZodFromSchema(schema),
+      responseBody: generateResponseBodyOfArray(schema),
     };
     return endpoint;
   });
-  return allPathsKeys;
+  return allGetEndpoints;
 };
 
 export const generateEndpoints = (fileAsJson: string): Endpoint[] => {
-  const files = nonSpecificSpec.parse(exampleFileAsJson);
-  return generateZodPaths(files);
+  const files = openApiSchema.parse(fileAsJson);
+  return generateAllEndpoints(files);
 };
-
-// fileAsJson {
-//     openapi: '3.0.0',
-//     info: {
-//       version: '1.0.0',
-//       title: 'Simple API',
-//       description: 'A simple API to illustrate OpenAPI concepts'
-//     },
-//     servers: [ { url: 'https://example.io/v1' } ],
-//     components: { securitySchemes: { BasicAuth: [Object] } },
-//     security: [ { BasicAuth: [] } ],
-//     paths: { '/artists': { get: [Object] } }
-//   }
 
 export { isValidOpenApiSpec };
