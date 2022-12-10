@@ -1,11 +1,12 @@
 import { MOCK_PATH } from "./consts";
+import { generateZodFromTs } from "./parseTsFileToEndpoints";
 import { getAndValidateFile } from "./parseYamlFile";
-import { writeTsSchemaToFile, writeYamlFileToTs } from "./writeYamlFileToTs";
+import { writeYamlFileToTs } from "./writeYamlFileToTs";
 
 const program = async () => {
-  const jsonObject = await getAndValidateFile(MOCK_PATH);
-  const typeFileString = await writeYamlFileToTs();
-  writeTsSchemaToFile(typeFileString);
+  await getAndValidateFile(MOCK_PATH);
+  await writeYamlFileToTs();
+  await generateZodFromTs();
 };
 
 export { program };
