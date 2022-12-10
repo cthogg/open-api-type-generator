@@ -3,7 +3,6 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
   "/artists": {
     /** @description Returns a list of artists */
@@ -13,12 +12,12 @@ export interface paths {
         /** @description Successfully returned a list of artists */
         200: {
           content: {
-            "application/json": ({
-                artist_name?: string;
-                artist_genre?: string;
-                albums_recorded?: number;
-                username: string;
-              })[];
+            "application/json": {
+              artist_name?: string;
+              artist_genre?: string;
+              albums_recorded?: number;
+              username: string;
+            }[];
           };
         };
         /** @description Invalid request */
