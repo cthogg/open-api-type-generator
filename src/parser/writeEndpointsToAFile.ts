@@ -10,9 +10,8 @@ function convertToDTOName(str: string): string {
   return `${sentenceCase(httpMethod)}${sentenceCase(dtoName)}DTO`;
 }
 
-const generateStrings = (endpoints: Endpoint[]) => {
+export const generateStrings = (endpoints: Endpoint[]): string[] => {
   const stringArray: string[] = [];
-
   endpoints.forEach((endpoint, i) => {
     const identifier = endpoint.endpoint;
     const name = convertToDTOName(identifier);
@@ -23,13 +22,12 @@ const generateStrings = (endpoints: Endpoint[]) => {
   return stringArray;
 };
 
-export const writeEndpointsToAFile = (endpoints: Endpoint[]) => {
-  const stringArray = generateStrings(endpoints);
+export const writeStringstoAFile = (strings: string[]) => {
   const file = fs.createWriteStream("endpoints.ts");
   file.on("error", (err) => {
     console.log(err);
   });
-  stringArray.forEach((str) => {
+  strings.forEach((str) => {
     file.write(str);
   });
   file.end();
