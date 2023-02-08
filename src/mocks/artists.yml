@@ -9,6 +9,7 @@ servers:
   - url: https://example.io/v1
 
 components:
+
   securitySchemes:
     BasicAuth:
       type: http
