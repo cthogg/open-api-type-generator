@@ -1,12 +1,11 @@
 import { z } from "zod";
-
 const infoSchema = z.object({
   version: z.string(),
   title: z.string(),
   description: z.string(),
 });
 
-const getArraySchema = z.object({
+export const openApiArraySchema = z.object({
   type: z.literal("array"),
   items: z.object({
     type: z.literal("object"),
@@ -28,7 +27,7 @@ export const openApiSchema = z.object({
             description: z.string(),
             content: z.object({
               "application/json": z.object({
-                schema: getArraySchema,
+                schema: openApiArraySchema,
               }),
             }),
           }),
@@ -37,6 +36,3 @@ export const openApiSchema = z.object({
     })
   ),
 });
-
-export type OpenApi = z.infer<typeof openApiSchema>;
-export type SchemaArray = z.infer<typeof getArraySchema>;

@@ -1,13 +1,14 @@
 import { MOCK_PATH } from "./consts";
 import { getAndValidateFile } from "./getAndValidateFile";
-import { OpenApi } from "./openApiTypes";
+import { OpenApi } from "./types";
 import { generateEndpoints } from "./validateParsedStructure";
+import { writeEndpointsToAFile } from "./writeEndpointsToAFile";
 
 const program = async () => {
   const file: OpenApi = await getAndValidateFile(MOCK_PATH);
   const endpoints = generateEndpoints(file);
-  //write endpoints to a file
-  // write endpoint file to ts file.
+  console.log("endpoints", endpoints);
+  writeEndpointsToAFile(endpoints);
   return endpoints;
 };
 

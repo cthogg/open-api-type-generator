@@ -1,7 +1,8 @@
 import SwaggerParser from "@apidevtools/swagger-parser";
 import fs from "fs";
 import { parse } from "yaml";
-import { OpenApi, openApiSchema } from "./openApiTypes";
+import { openApiSchema } from "./openApiTypes";
+import { OpenApi } from "./types";
 
 const getAndValidateFile = async (path: string): Promise<OpenApi> => {
   SwaggerParser.parse(path);
