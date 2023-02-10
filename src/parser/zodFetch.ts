@@ -1,17 +1,31 @@
-import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
+import { Endpoint } from "./types";
 
 const fetchWithZod = createZodFetcher();
 
-export const fetchZod = () =>
-  fetchWithZod(
-    // The schema you want to validate with
-    z.object({
-      hello: z.literal("world"),
-    }),
-    // Any parameters you would usually pass to fetch
-    "https://dummy.restapiexample.com/api/v1/employees"
-  ).then((res) => {
-    console.log(res);
-    //          ^? { hello: string }
-  });
+export type Fetcher = {
+  endpoint: string;
+  fetcherAsync: () => Promise<any>;
+  fetcherResolved: () => Promise<any>;
+};
+
+const createZodFetcherFromEndpoint = (endpoint: Endpoint): Fetcher => {
+  const fetcherAsync = () => {
+    return fetchWithZod<typeof endpoint.responseBody>(
+      // The schema you want to validate with
+      endpoint.responseBody,
+      // Any parameters you would usually pass to fetch
+      endpoint.endpoint
+    );
+  };
+  const fetcherResolved = async () => {
+    return fetcherAsync().then((res) => res);
+  };
+  return { endpoint: endpoint.endpoint, fetcherAsync, fetcherResolved };
+};
+
+export const createZodFetchersFromEndpoints = (
+  endpoints: Endpoint[]
+): Fetcher[] => {
+  return endpoints.map((endpoint) => createZodFetcherFromEndpoint(endpoint));
+};

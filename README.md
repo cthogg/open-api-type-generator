@@ -137,7 +137,8 @@ albums_recorded: string;
   - [ ] Probably user the YAML package [https://www.npmjs.com/package/yaml](https://www.npmjs.com/package/yaml)
   - [ ] Get separate types file
 - [ ] Package it up: exports one function `{createBackendTypes(openApi.yml)}`
-- [ ] Output ast gets converted to `getArtistsBackendTypes`.
+- [x] Output ast gets converted to `getArtistsBackendTypes`.
+- [ ] Can get typesafe api adapters (e.g. like the useHttpQuery and zodFetch)
 
 It will be like a compiler:
 

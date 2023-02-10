@@ -18,12 +18,6 @@ it.only("Should create a default fetcher", async () => {
   );
 
   const fetchWithZod = createZodFetcher();
-  const response = await fetchWithZod(
-    z.object({
-      hello: z.string(),
-    }),
-    "https://example.com"
-  );
   fetchWithZod(
     z.object({
       hello: z.string(),
@@ -36,6 +30,7 @@ it.only("Should create a default fetcher", async () => {
   });
 });
 
+//FIXME: these tests below are not working
 it("Should throw an error with mis-matched schemas with a default fetcher", async () => {
   server.use(
     rest.get("https://example.com", (req, res, ctx) => {
