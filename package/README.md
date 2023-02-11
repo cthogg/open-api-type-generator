@@ -141,7 +141,8 @@ albums_recorded: string;
 - [ ] Can get typesafe api adapters (e.g. like the useHttpQuery and zodFetch)
 - [x] package the module so that exposes : i) The typescript typefile
 - [ ] package the module so that exposes : i) The zod fetch endpoints
-- [ ] make a monorepo showing examples of the typescript typefile and adapters
+- [ ] find a way to make it automatically show the appropriate types (e.g. like with http. Must somehow print the constants and export them).
+- [x] make a monorepo showing examples of the typescript typefile and adapters
       It will be like a compiler:
 
 1. Parsing / Lexing (YAML.load)
