@@ -1,5 +1,5 @@
 import { createZodFetcher } from "zod-fetch";
-import { Endpoint } from "./types";
+import { Endpoint } from "../../lexer/types";
 
 const fetchWithZod = createZodFetcher();
 

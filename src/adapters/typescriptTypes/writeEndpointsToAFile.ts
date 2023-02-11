@@ -1,7 +1,7 @@
 import { sentenceCase } from "change-case";
 import fs from "fs";
 import { createTypeAlias, printNode, zodToTs } from "zod-to-ts";
-import { Endpoint } from "./types";
+import { Endpoint } from "../../lexer/types";
 
 function convertToDTOName(str: string): string {
   const [httpMethod, endpoint] = str.split(" ");
