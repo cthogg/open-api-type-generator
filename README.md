@@ -139,8 +139,9 @@ albums_recorded: string;
 - [ ] Package it up: exports one function `{createBackendTypes(openApi.yml)}`
 - [x] Output ast gets converted to `getArtistsBackendTypes`.
 - [ ] Can get typesafe api adapters (e.g. like the useHttpQuery and zodFetch)
-
-It will be like a compiler:
+- [ ] package the module so that exposes : i) The typescript typefile ii) the zodFetch endpoints
+- [ ] make a monorepo showing examples of the typescript typefile and adapters
+      It will be like a compiler:
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)

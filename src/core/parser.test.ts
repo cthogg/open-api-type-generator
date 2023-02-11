@@ -19,6 +19,11 @@ describe("parser tests", () => {
           albums_recorded: number;
           username: string;
       };",
+        "
+      ",
+        "
+      ",
+        "export {GetArtistsDTO}",
       ]
     `);
   });
