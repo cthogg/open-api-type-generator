@@ -1,3 +1,1 @@
-import { printHelloWorld } from "./helloWorld";
-
-export { printHelloWorld };
+export * from "./out/index";

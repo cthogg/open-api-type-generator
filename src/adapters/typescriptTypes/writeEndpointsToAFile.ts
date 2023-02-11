@@ -30,7 +30,7 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
 };
 
 export const writeStringstoAFile = (strings: string[]) => {
-  const file = fs.createWriteStream("src/endpoints.ts");
+  const file = fs.createWriteStream("src/out/endpoints.ts");
   file.on("error", (err) => {
     console.log(err);
   });

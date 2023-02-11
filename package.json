@@ -6,7 +6,8 @@
   "types": "./src/index.ts",
   "private": true,
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
