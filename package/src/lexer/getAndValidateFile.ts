@@ -1,5 +1,5 @@
-import SwaggerParser from "@apidevtools/swagger-parser";
-import fs from "fs";
+import * as SwaggerParser from "@apidevtools/swagger-parser";
+import * as fs from "fs";
 import { parse } from "yaml";
 import { openApiSchema } from "./openApiTypes";
 import { OpenApi } from "./types";

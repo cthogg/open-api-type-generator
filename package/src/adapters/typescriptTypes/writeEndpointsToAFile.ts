@@ -1,5 +1,5 @@
 import { sentenceCase } from "change-case";
-import fs from "fs";
+import * as fs from "fs";
 import { EOL } from "os";
 import { createTypeAlias, printNode, zodToTs } from "zod-to-ts";
 import { Endpoint } from "../../lexer/types";

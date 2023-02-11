@@ -11,9 +11,13 @@ import { OpenApi } from "../lexer/types";
 import { generateEndpoints } from "../lexer/validateParsedStructure";
 import { MOCK_PATH } from "./consts";
 
-const generateStringsOfFile = async () => {
+const generateEndpointsOfAFile = async () => {
   const file: OpenApi = await getAndValidateFile(MOCK_PATH);
-  const endpoints = generateEndpoints(file);
+  return generateEndpoints(file);
+};
+
+const generateStringsOfFile = async () => {
+  const endpoints = await generateEndpointsOfAFile();
   return generateStrings(endpoints);
 };
 
@@ -23,8 +27,7 @@ const writeFile = async () => {
 };
 
 const createTypes = async (): Promise<Fetcher[]> => {
-  const file: OpenApi = await getAndValidateFile(MOCK_PATH);
-  const endpoints = generateEndpoints(file);
+  const endpoints = await generateEndpointsOfAFile();
   return createZodFetchersFromEndpoints(endpoints);
 };
 
