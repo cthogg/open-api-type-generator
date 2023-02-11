@@ -1,9 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { GetArtistsDTO } from "open-api-type-generator";
+import { useState } from "react";
+import "./App.css";
+import reactLogo from "./assets/react.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const myType: GetArtistsDTO = {
+    albums_recorded: 2,
+    artist_genre: "rock",
+    artist_name: "The Beatles",
+    username: "BB King",
+  };
 
   return (
     <div className="App">
@@ -27,8 +34,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <pre>
+        <code>{JSON.stringify(myType, null, 2)}</code>
+      </pre>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
