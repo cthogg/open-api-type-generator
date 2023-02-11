@@ -1,4 +1,4 @@
-import { GetArtistsDTO } from "open-api-type-generator";
+import { endpoints, GetArtistsDTO } from "open-api-type-generator";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -11,6 +11,7 @@ function App() {
     artist_name: "The Beatles",
     username: "BB King",
   };
+  const me = endpoints[0].endpoint;
 
   return (
     <div className="App">

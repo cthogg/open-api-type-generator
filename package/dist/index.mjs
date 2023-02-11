@@ -1,16 +1,21 @@
 // src/mocks/mockEndpoints.ts
 import { z } from "zod";
-var endpoints = [
-  {
-    endpoint: "GET /artists",
-    responseBody: z.object({
-      artist_name: z.string(),
-      artist_genre: z.string(),
-      albums_recorded: z.number(),
-      username: z.string()
-    })
-  }
-];
+var getArtistsEndpoint = {
+  endpoint: "GET /artists",
+  responseBody: z.object({
+    artist_name: z.string(),
+    artist_genre: z.string(),
+    albums_recorded: z.number(),
+    username: z.string()
+  })
+};
+var getAlbumsEndpoint = {
+  endpoint: "GET /album",
+  responseBody: z.object({
+    album_name: z.string()
+  })
+};
+var endpoints = [getArtistsEndpoint, getAlbumsEndpoint];
 
 // src/out/endpoints.ts
 var endpoints2 = endpoints;

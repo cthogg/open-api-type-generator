@@ -26,17 +26,22 @@ module.exports = __toCommonJS(src_exports);
 
 // src/mocks/mockEndpoints.ts
 var import_zod = require("zod");
-var endpoints = [
-  {
-    endpoint: "GET /artists",
-    responseBody: import_zod.z.object({
-      artist_name: import_zod.z.string(),
-      artist_genre: import_zod.z.string(),
-      albums_recorded: import_zod.z.number(),
-      username: import_zod.z.string()
-    })
-  }
-];
+var getArtistsEndpoint = {
+  endpoint: "GET /artists",
+  responseBody: import_zod.z.object({
+    artist_name: import_zod.z.string(),
+    artist_genre: import_zod.z.string(),
+    albums_recorded: import_zod.z.number(),
+    username: import_zod.z.string()
+  })
+};
+var getAlbumsEndpoint = {
+  endpoint: "GET /album",
+  responseBody: import_zod.z.object({
+    album_name: import_zod.z.string()
+  })
+};
+var endpoints = [getArtistsEndpoint, getAlbumsEndpoint];
 
 // src/out/endpoints.ts
 var endpoints2 = endpoints;
