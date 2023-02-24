@@ -139,7 +139,7 @@ albums_recorded: string;
   - [ ] Get separate types file
 - [ ] Package it up: exports one function `{createBackendTypes(openApi.yml)}`
 - [x] Output ast gets converted to `getArtistsBackendTypes`.
-- [ ] Can get typesafe api adapters (e.g. like the useHttpQuery and zodFetch)
+- [ ] Can get typesafe api adapters (e.g. like the useHttpQuery)
 - [x] package the module so that exposes : i) The typescript typefile
 - [ ] package the module so that exposes : i) The zod fetch endpoints
 - [ ] find a way to make it automatically show the appropriate types (e.g. like with http. Must somehow print the constants and export them).
