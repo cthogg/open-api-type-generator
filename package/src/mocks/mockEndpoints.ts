@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const getAlbumsEndpoint2 = {
+const getArtistsEndpoint = {
   "GET /artists": {
     responseBody: z.object({
       artist_name: z.string(),
@@ -11,10 +11,8 @@ const getAlbumsEndpoint2 = {
   },
 };
 
-export const endpoints: [typeof getAlbumsEndpoint2] = [getAlbumsEndpoint2];
-
 export const endpointRegistry = {
-  ...getAlbumsEndpoint2,
+  ...getArtistsEndpoint,
 } as const;
 
 export type EndpointRegistry = typeof endpointRegistry;

@@ -1,4 +1,4 @@
-import { endpoints as mockEndpoints } from "../mocks/mockEndpoints";
+import { endpointRegistry as mockEndpoints } from "../mocks/mockEndpoints";
 
 const endpoints = mockEndpoints;
 
