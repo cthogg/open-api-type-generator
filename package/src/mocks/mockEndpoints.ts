@@ -18,9 +18,12 @@ const getAlbumsEndpoint = {
 } as const;
 
 const getAlbumsEndpoint2 = {
-  "GET /album": {
+  "GET /artists": {
     responseBody: z.object({
-      album_name: z.string(),
+      artist_name: z.string(),
+      artist_genre: z.string(),
+      albums_recorded: z.number(),
+      username: z.number(),
     }),
   },
 };
@@ -28,8 +31,9 @@ const getAlbumsEndpoint2 = {
 export const endpoints: [typeof getArtistsEndpoint, typeof getAlbumsEndpoint] =
   [getArtistsEndpoint, getAlbumsEndpoint];
 
-const endpointRegistry = {
+export const endpointRegistry = {
   ...getAlbumsEndpoint2,
 } as const;
 
-type EndpointRegistry = typeof endpointRegistry;
+export type EndpointRegistry = typeof endpointRegistry;
+export type RegisteredHttpEndpoint = keyof typeof endpointRegistry;

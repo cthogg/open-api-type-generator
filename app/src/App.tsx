@@ -1,4 +1,4 @@
-import { endpoints, fetchers, GetArtistsDTO } from "open-api-type-generator";
+import { GetArtistsDTO, useHttpQuery } from "open-api-type-generator";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -11,9 +11,7 @@ function App() {
     artist_name: "The Beatles",
     username: "BB King",
   };
-  const me = endpoints[0].endpoint;
-  const myFetcher = fetchers[0].endpoint;
-
+  const { data } = useHttpQuery("GET /artists", {}, "token");
   return (
     <div className="App">
       <div>
@@ -25,6 +23,9 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <h1>
+        data is <code>{JSON.stringify(data)}</code>
+      </h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
