@@ -16,7 +16,8 @@
 
 1. Input: Open API yaml file:
 2. Output: Typescript files of the endpoints.
-3. Typechecking on runtime so that the frontend is confident that the backend is sending what it is expecting:
+3. `useHttpQuery` or `zodFetcher`
+4. Typechecking on runtime so that the frontend is confident that the backend is sending what it is expecting:
    1. Using runtypes.
    2. Using zod.
 

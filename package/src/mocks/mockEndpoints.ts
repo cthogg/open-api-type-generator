@@ -17,5 +17,19 @@ const getAlbumsEndpoint = {
   }),
 } as const;
 
+const getAlbumsEndpoint2 = {
+  "GET /album": {
+    responseBody: z.object({
+      album_name: z.string(),
+    }),
+  },
+};
+
 export const endpoints: [typeof getArtistsEndpoint, typeof getAlbumsEndpoint] =
   [getArtistsEndpoint, getAlbumsEndpoint];
+
+const endpointRegistry = {
+  ...getAlbumsEndpoint2,
+} as const;
+
+type EndpointRegistry = typeof endpointRegistry;

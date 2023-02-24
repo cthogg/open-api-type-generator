@@ -1,4 +1,4 @@
-import { endpoints, GetArtistsDTO } from "open-api-type-generator";
+import { endpoints, fetchers, GetArtistsDTO } from "open-api-type-generator";
 import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -12,6 +12,7 @@ function App() {
     username: "BB King",
   };
   const me = endpoints[0].endpoint;
+  const myFetcher = fetchers[0].endpoint;
 
   return (
     <div className="App">
