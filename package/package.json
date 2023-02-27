@@ -7,8 +7,9 @@
   "private": true,
   "scripts": {
     "test": "vitest",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "convertToZod": "ts-to-zod src/out/typescriptTypes.ts src/out/zodTypes.ts && node src/out/zodTypeToEndpointRegistry/changeFirstLine.js && node src/out/zodTypeToEndpointRegistry/replaceConstWithExportConst.js"
+    "_build": "tsup src/index.ts --format cjs,esm --dts",
+    "convertToZod": "ts-to-zod src/out/typescriptTypes.ts src/out/zodTypes.ts && node src/out/zodTypeToEndpointRegistry/changeFirstLine.js && node src/out/zodTypeToEndpointRegistry/replaceConstWithExportConst.js",
+    "build": "pnpm run _build && pnpm run convertToZod"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
