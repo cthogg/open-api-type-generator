@@ -31,10 +31,13 @@ export const generateEndpoints = (spec: OpenApi): Endpoint[] => {
     const pathObject = spec.paths[path];
     const schema =
       pathObject.get.responses["200"].content["application/json"].schema;
+
     const endpoint: Endpoint = {
-      endpoint: `GET ${path}`,
-      responseBody: generateResponseBodyOfArray(schema),
+      [`GET ${path}`]: {
+        responseBody: generateResponseBodyOfArray(schema),
+      },
     };
+
     return endpoint;
   });
   return allGetEndpoints;

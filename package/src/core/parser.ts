@@ -2,10 +2,7 @@ import {
   generateStrings,
   writeStringstoAFile,
 } from "../adapters/typescriptTypes/writeEndpointsToAFile";
-import {
-  createZodFetchersFromEndpoints,
-  Fetcher,
-} from "../adapters/zodFetch/zodFetch";
+
 import { getAndValidateFile } from "../lexer/getAndValidateFile";
 import { OpenApi } from "../lexer/types";
 import { generateEndpoints } from "../lexer/validateParsedStructure";
@@ -26,9 +23,4 @@ const writeFile = async () => {
   writeStringstoAFile(strings);
 };
 
-const createTypes = async (): Promise<Fetcher[]> => {
-  const endpoints = await generateEndpointsOfAFile();
-  return createZodFetchersFromEndpoints(endpoints);
-};
-
-export { generateStringsOfFile, writeFile, createTypes };
+export { generateStringsOfFile, writeFile };

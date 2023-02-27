@@ -1,20 +1,9 @@
-// import * as r from "runtypes";
-// import { BACKEND_BASE, isProductionEnvironment } from '../../const';
-// import { logToExternalErrorHandlers } from '../../utils/customConsole';
-// import { ErrorCode, ErrorCodeRuntype } from '../errorCodes';
 import { z } from "zod";
 import {
   EndpointRegistry,
   endpointRegistry,
   RegisteredHttpEndpoint,
-} from "../../mocks/mockEndpoints";
-
-/**
- * Utility function that returns the type of the requestBody for a given endpoint.
- */
-// export type ExtractRequestBody<T extends RegisteredHttpEndpoint> = z.infer<
-//   EndpointRegistry[T]["requestBody"]
-// >;
+} from "../../out";
 
 /**
  * Utility function that returns the type of the requestBody for a given endpoint.
@@ -38,45 +27,9 @@ function assertResponseBodyShape({
         runtypeError
       )}`
     );
-    // alert(
-    //   `response body did not match expected shape ${JSON.stringify(
-    //     runtypeError
-    //   )}`
-    // );
   }
 }
 
-/**
- * Removes all properties from type `TObject` whose values are of type `TPropertyValue`.
- *
- * Examples (see unit tests for more examples):
- *
- * ```ts
- * type X = RemoveByValue<{ a: number, b: string, c: string}, number>
- * // X will be { b: string, c: string }
- *
- * type Y = RemoveByValue<{ key1: boolean, key2: undefined }, undefined>
- * // Y will be { key1: boolean }
- * ```
- *
- * We use this construct in the signature of the `http` function so that
- *
- * ```ts
- * http(
- *    'GET /simple/endpoint/without/params/and/body',
- *    { pathParams: {}, queryParams: {}, requestBody: {} },
- *    token
- * )
- * ```
- * becomes
- * ```ts
- * http(
- *    'GET /simple/endpoint/without/params/and/body',
- *    {},
- *    token
- * )
- * ```
- */
 export type RemoveByValue<TObject, TPropertyValue> = Pick<
   TObject,
   {

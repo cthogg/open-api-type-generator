@@ -14,6 +14,3 @@ const getArtistsEndpoint = {
 export const endpointRegistry = {
   ...getArtistsEndpoint,
 } as const;
-
-export type EndpointRegistry = typeof endpointRegistry;
-export type RegisteredHttpEndpoint = keyof typeof endpointRegistry;

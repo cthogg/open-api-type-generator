@@ -18,16 +18,19 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
   stringArray.push(EOL);
   stringArray.push(EOL);
 
-  endpoints.forEach((endpoint, i) => {
-    const identifier = endpoint.endpoint;
-    const name = convertToDTOName(identifier);
-    const { node } = zodToTs(endpoint.responseBody, name);
-    const typeAlias = createTypeAlias(node, name, endpoint.endpoint);
-    stringArray.push(printNode(typeAlias));
-    //push a new line to string array
-    stringArray.push(EOL);
-    stringArray.push(EOL);
-    exportNames.push(name);
+  endpoints.forEach((_endpoint, i) => {
+    Object.keys(_endpoint).map((endpoint) => {
+      const identifier = endpoint;
+
+      const name = convertToDTOName(identifier);
+      const { node } = zodToTs(_endpoint["endpoint"].responseBody, name);
+      const typeAlias = createTypeAlias(node, name, endpoint);
+      stringArray.push(printNode(typeAlias));
+      //push a new line to string array
+      stringArray.push(EOL);
+      stringArray.push(EOL);
+      exportNames.push(name);
+    });
   });
   stringArray.push(`export {${exportNames.join(", ")}}`);
   return stringArray;
