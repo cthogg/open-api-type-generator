@@ -28,6 +28,7 @@ export function useHttpQuery<
     queryFn: async () => {
       return http(endpoint, token);
     },
+    onError: (e) => alert(JSON.stringify(e)),
     ...useQueryOptions,
   });
 }
