@@ -23,7 +23,7 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
       const identifier = endpoint;
 
       const name = convertToDTOName(identifier);
-      const { node } = zodToTs(_endpoint["endpoint"].responseBody, name);
+      const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
       const typeAlias = createTypeAlias(node, name, endpoint);
       stringArray.push(printNode(typeAlias));
       //push a new line to string array

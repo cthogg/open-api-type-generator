@@ -8,4 +8,4 @@ type GetArtistsDTO = {
   username: string;
 };
 
-export type { GetArtistsDTO };
+export { GetArtistsDTO };
