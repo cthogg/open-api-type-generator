@@ -30,14 +30,19 @@ function assertResponseBodyShape({
   runtype: z.ZodType<unknown>;
   responseBody: unknown;
 }) {
-  console.log("responseBody", responseBody);
-
   try {
     runtype.parse(responseBody);
   } catch (runtypeError) {
-    console.error("response body did not match expected shape", runtypeError);
-
-    throw new Error("response body did not match expected shape");
+    throw new Error(
+      `response body did not match expected shape ${JSON.stringify(
+        runtypeError
+      )}`
+    );
+    // alert(
+    //   `response body did not match expected shape ${JSON.stringify(
+    //     runtypeError
+    //   )}`
+    // );
   }
 }
 
@@ -112,8 +117,7 @@ async function defaultResponseHandler(response: Response, endpoint: string) {
  * ```
  */
 export async function http<T extends RegisteredHttpEndpoint>(
-  endpoint: T,
-  token: string
+  endpoint: T
 ): Promise<z.infer<EndpointRegistry[T]["responseBody"]>> {
   const endpointDef = endpointRegistry[endpoint];
 

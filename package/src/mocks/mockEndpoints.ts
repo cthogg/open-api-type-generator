@@ -6,7 +6,7 @@ const getArtistsEndpoint = {
       artist_name: z.string(),
       artist_genre: z.string(),
       albums_recorded: z.number(),
-      username: z.number(),
+      username: z.string(),
     }),
   },
 };

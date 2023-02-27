@@ -6,6 +6,24 @@ import {
   RegisteredHttpEndpoint,
 } from "../../mocks/mockEndpoints";
 import { http } from "./http";
+
+// export function useDebugErrorHandler(): (error: unknown) => void {
+//   const showDebugErrorMessage = useShowDebugErrorMessage();
+//   const { enqueueSnackbar } = useSnackbar();
+
+//   return (error: unknown) => {
+//       const { known, message } = composeErrorMessage(error);
+//       if (error instanceof Error && !known) {
+//           logToExternalErrorHandlers(error);
+//       }
+//       if (isProductionEnvironment() || known) {
+//           enqueueSnackbar(message);
+//       } else {
+//           showDebugErrorMessage(error);
+//       }
+//   };
+// }
+
 // import * as r from "runtypes";
 
 /**
@@ -26,9 +44,11 @@ export function useHttpQuery<
   return useQuery({
     queryKey: [endpoint],
     queryFn: async () => {
-      return http(endpoint, token);
+      return http(endpoint);
     },
-    onError: (e) => alert(JSON.stringify(e)),
+    onError: (e) => {
+      console.error(e);
+    },
     ...useQueryOptions,
   });
 }
