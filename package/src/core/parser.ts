@@ -3,9 +3,9 @@ import {
   writeStringstoAFile,
 } from "../adapters/typescriptTypes/writeEndpointsToAFile";
 
+import { generateEndpoints } from "../lexer/generateEndpoints";
 import { getAndValidateFile } from "../lexer/getAndValidateFile";
 import { OpenApi } from "../lexer/types";
-import { generateEndpoints } from "../lexer/validateParsedStructure";
 import { MOCK_PATH } from "./consts";
 
 const generateEndpointsOfAFile = async () => {
