@@ -19,9 +19,18 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
   stringArray.push(EOL);
 
   endpoints.forEach((_endpoint, i) => {
+    console.log("_endpoint", _endpoint.responseBody);
     Object.keys(_endpoint).map((endpoint) => {
       const identifier = endpoint;
-
+      /*FIXME: I want to log here the exact zod object (how it looks to the developer)
+      e.g. so it prints
+       z.object({
+         artist_name: z.string(),
+         artist_genre: z.string(),
+         albums_recorded: z.number(),
+         username: z.string(),
+       }) */
+      console.log(JSON.stringify(_endpoint[endpoint].responseBody, null, 2));
       const name = convertToDTOName(identifier);
       const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
       const typeAlias = createTypeAlias(node, name, endpoint);
