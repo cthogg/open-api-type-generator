@@ -23,7 +23,7 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
     Object.keys(_endpoint).map((endpoint) => {
       const identifier = endpoint;
       /*FIXME: I want to log here the exact zod object (how it looks to the developer)
-      e.g. so it prints
+      e.g. How can it get it to console log the following here?
        z.object({
          artist_name: z.string(),
          artist_genre: z.string(),
