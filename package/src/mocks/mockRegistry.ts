@@ -1,12 +1,12 @@
-import { z } from "zod";
+import * as rt from "runtypes";
 
 const getArtistsEndpoint = {
   "GET /artists": {
-    responseBody: z.object({
-      artist_name: z.string(),
-      artist_genre: z.string(),
-      albums_recorded: z.number(),
-      username: z.string(),
+    responseBody: rt.Record({
+      artist_name: rt.String,
+      artist_genre: rt.String,
+      albums_recorded: rt.Number,
+      username: rt.String,
     }),
   },
 };

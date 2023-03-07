@@ -9,7 +9,8 @@
     "test": "vitest",
     "_build": "tsup src/index.ts --format cjs,esm --dts",
     "convertToZod": "ts-to-zod src/out/typescriptTypes.ts src/out/zodTypes.ts && node src/out/zodTypeToEndpointRegistry/changeFirstLine.js && node src/out/zodTypeToEndpointRegistry/replaceConstWithExportConst.js",
-    "build": "pnpm run _build && pnpm run convertToZod"
+    "build": "pnpm run _build && pnpm run convertToZod",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
@@ -20,6 +21,7 @@
     "openapi-typescript": "^6.1.0",
     "react": "^18.2.0",
     "react-query": "^3.39.3",
+    "runtypes": "^6.6.0",
     "yaml": "2.1.3",
     "zod": "3.20.2",
     "zod-fetch": "0.1.0",

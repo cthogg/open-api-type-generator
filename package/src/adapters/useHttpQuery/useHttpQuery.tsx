@@ -1,8 +1,7 @@
 import { useQuery } from "react-query";
 import { UseQueryOptions, UseQueryResult } from "react-query/types/react/types";
-import { z } from "zod";
+import * as rt from "runtypes";
 import { EndpointRegistry, RegisteredHttpEndpoint } from "../../out";
-
 import { http } from "./http";
 
 /**
@@ -10,11 +9,11 @@ import { http } from "./http";
  */
 export function useHttpQuery<
   T extends RegisteredHttpEndpoint,
-  TData = z.infer<EndpointRegistry[T]["responseBody"]>
+  TData = rt.Static<EndpointRegistry[T]["responseBody"]>
 >(
   endpoint: T,
   useQueryOptions: UseQueryOptions<
-    z.infer<EndpointRegistry[T]["responseBody"]>,
+    rt.Static<EndpointRegistry[T]["responseBody"]>,
     unknown,
     TData
   > = {},

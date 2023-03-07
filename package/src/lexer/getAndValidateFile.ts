@@ -8,7 +8,7 @@ const getAndValidateFile = async (path: string): Promise<OpenApi> => {
   SwaggerParser.parse(path);
   const file = fs.readFileSync(path, "utf8");
   const fileAsJson = parse(file);
-  return openApiSchema.parse(fileAsJson);
+  return openApiSchema.check(fileAsJson);
 };
 
 export { getAndValidateFile };

@@ -1,11 +1,11 @@
-import { z } from "zod";
+import rt from "runtypes";
 import { openApiArraySchema, openApiSchema } from "./openApiTypes";
 
 export type Endpoint = {
   [key: string]: {
-    responseBody: z.ZodType;
+    responseBody: rt.Runtype;
   };
 };
 
-export type OpenApi = z.infer<typeof openApiSchema>;
-export type SchemaArray = z.infer<typeof openApiArraySchema>;
+export type OpenApi = rt.Static<typeof openApiSchema>;
+export type SchemaArray = rt.Static<typeof openApiArraySchema>;

@@ -1,29 +1,31 @@
-import { z } from "zod";
+import rt from "runtypes";
 import { Endpoint, OpenApi, SchemaArray } from "./types";
 
-const getZodType = (type: string): z.ZodType => {
+type Runtype = rt.Runtype;
+
+const getRuntype = (type: string): Runtype => {
   switch (type) {
     case "string":
-      return z.string();
+      return rt.String;
     case "integer":
-      return z.number();
+      return rt.Number;
     default:
-      return z.unknown();
+      return rt.Unknown;
   }
 };
 
-const generateResponseBodyOfArray = (schema: SchemaArray): z.ZodType => {
+const generateResponseBodyOfArray = (schema: SchemaArray): Runtype => {
   const listOfProperties = schema.items.properties;
   const listOfPropertiesKeys = Object.keys(listOfProperties).map((key) => {
     const property = listOfProperties[key];
     return {
-      [key]: getZodType(property.type),
+      [key]: getRuntype(property.type),
     };
   });
   const mergedListOfPropertyKeys = listOfPropertiesKeys.reduce((acc, curr) => {
     return { ...acc, ...curr };
   });
-  return z.object(mergedListOfPropertyKeys);
+  return rt.Record(mergedListOfPropertyKeys);
 };
 
 export const generateEndpoints = (spec: OpenApi): Endpoint[] => {

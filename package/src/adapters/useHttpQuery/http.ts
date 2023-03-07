@@ -1,4 +1,4 @@
-import { z } from "zod";
+import rt from "runtypes";
 import {
   EndpointRegistry,
   endpointRegistry,
@@ -8,7 +8,7 @@ import {
 /**
  * Utility function that returns the type of the requestBody for a given endpoint.
  */
-export type ExtractResponseBody<T extends RegisteredHttpEndpoint> = z.infer<
+export type ExtractResponseBody<T extends RegisteredHttpEndpoint> = rt.Static<
   EndpointRegistry[T]["responseBody"]
 >;
 
@@ -16,11 +16,11 @@ function assertResponseBodyShape({
   runtype,
   responseBody,
 }: {
-  runtype: z.ZodType<unknown>;
+  runtype: rt.Runtype;
   responseBody: unknown;
 }) {
   try {
-    runtype.parse(responseBody);
+    runtype.check(responseBody);
   } catch (runtypeError) {
     throw new Error(
       `response body did not match expected shape ${JSON.stringify(
@@ -71,7 +71,7 @@ async function defaultResponseHandler(response: Response, endpoint: string) {
  */
 export async function http<T extends RegisteredHttpEndpoint>(
   endpoint: T
-): Promise<z.infer<EndpointRegistry[T]["responseBody"]>> {
+): Promise<rt.Static<EndpointRegistry[T]["responseBody"]>> {
   const endpointDef = endpointRegistry[endpoint];
 
   const method = "GET";

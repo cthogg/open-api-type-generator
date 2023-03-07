@@ -1,7 +1,6 @@
 import { sentenceCase } from "change-case";
 import * as fs from "fs";
 import { EOL } from "os";
-import { createTypeAlias, printNode, zodToTs } from "zod-to-ts";
 import { Endpoint } from "../../lexer/types";
 
 function convertToDTOName(str: string): string {
@@ -22,19 +21,12 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
     console.log("_endpoint", _endpoint.responseBody);
     Object.keys(_endpoint).map((endpoint) => {
       const identifier = endpoint;
-      /*FIXME: I want to log here the exact zod object (how it looks to the developer)
-      e.g. How can it get it to console log the following here?
-       z.object({
-         artist_name: z.string(),
-         artist_genre: z.string(),
-         albums_recorded: z.number(),
-         username: z.string(),
-       }) */
+
       console.log(JSON.stringify(_endpoint[endpoint].responseBody, null, 2));
       const name = convertToDTOName(identifier);
-      const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
-      const typeAlias = createTypeAlias(node, name, endpoint);
-      stringArray.push(printNode(typeAlias));
+      // const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
+      // const typeAlias = createTypeAlias(node, name, endpoint);
+      // stringArray.push(printNode(typeAlias));
       //push a new line to string array
       stringArray.push(EOL);
       stringArray.push(EOL);
