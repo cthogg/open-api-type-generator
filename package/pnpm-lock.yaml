@@ -13,15 +13,13 @@ specifiers:
   react: ^18.2.0
   react-query: ^3.39.3
   runtypes: ^6.6.0
-  ts-to-zod: ^1.13.1
+  ts-to-zod: ^2.0.1
   tsup: ^6.6.0
   typescript: 4.9.5
   vite: ^4.1.1
   vitest: 0.28.4
   yaml: 2.1.3
-  zod: 3.20.2
-  zod-fetch: 0.1.0
-  zod-to-ts: 1.1.2
+  zod: ^3.21.4
 
 dependencies:
   '@apidevtools/swagger-parser': 10.1.0_openapi-types@12.1.0
@@ -34,15 +32,13 @@ dependencies:
   react-query: 3.39.3_react@18.2.0
   runtypes: 6.6.0
   yaml: 2.1.3
-  zod: 3.20.2
-  zod-fetch: 0.1.0
-  zod-to-ts: 1.1.2_p5jgycp7euppyerdfacwyih2x4
+  zod: 3.21.4
 
 devDependencies:
   '@types/node': 18.11.6
   esbuild: 0.14.54
   prettier: 2.8.1
-  ts-to-zod: 1.13.1
+  ts-to-zod: 2.0.1
   tsup: 6.6.0_typescript@4.9.5
   typescript: 4.9.5
   vite: 4.1.1_@types+node@18.11.6
@@ -540,14 +536,14 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.14.0
 
-  /@oclif/command/1.8.20:
-    resolution: {integrity: sha512-BHM9byujY0kf0PiRorIyp99K50cA3i6Hyro0+TPpFFx+4QM+PyQ5vMHO/TG5wkEP8tIivNRs24bF8QVyJru25g==}
+  /@oclif/command/1.8.22:
+    resolution: {integrity: sha512-lystv7IKsWRmCv6K68jSvHrO/DILUPBDb5GZ3absTA5XTnNXTaMrcwVzTcMPfTf+gCrgIaPPD1bmbRStwfQxFw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/config': 1.18.6
+      '@oclif/config': 1.18.8
       '@oclif/errors': 1.3.6
-      '@oclif/help': 1.0.4
-      '@oclif/parser': 3.8.9
+      '@oclif/help': 1.0.5
+      '@oclif/parser': 3.8.10
       debug: 4.3.4
       semver: 7.3.8
     transitivePeerDependencies:
@@ -559,11 +555,11 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/errors': 1.3.5
-      '@oclif/parser': 3.8.9
+      '@oclif/parser': 3.8.10
       debug: 4.3.4
       globby: 11.1.0
       is-wsl: 2.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -573,11 +569,25 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/errors': 1.3.6
-      '@oclif/parser': 3.8.9
+      '@oclif/parser': 3.8.10
       debug: 4.3.4
       globby: 11.1.0
       is-wsl: 2.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@oclif/config/1.18.8:
+    resolution: {integrity: sha512-FetS52+emaZQui0roFSdbBP8ddBkIezEoH2NcjLJRjqkMGdE9Z1V+jsISVqTYXk2KJ1gAI0CHDXFjJlNBYbJBg==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      '@oclif/errors': 1.3.6
+      '@oclif/parser': 3.8.10
+      debug: 4.3.4
+      globby: 11.1.0
+      is-wsl: 2.2.0
+      tslib: 2.5.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -604,8 +614,8 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
-  /@oclif/help/1.0.4:
-    resolution: {integrity: sha512-w3xsdZj1af/dFN7oCmvAHbHRj6L0SOO5uGXEve0LLroAJSM3DeEpzgNMjxS5RTV2gVC4RmJ/rTqmp0SRaXGiTA==}
+  /@oclif/help/1.0.5:
+    resolution: {integrity: sha512-77ZXqVXcd+bQ6EafN56KbL4PbNtZM/Lq4GQElekNav+CPIgPNKT3AtMTQrc0fWke6bb/BTLB+1Fu1gWgx643jQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/config': 1.18.6
@@ -625,24 +635,24 @@ packages:
     resolution: {integrity: sha512-Ups2dShK52xXa8w6iBWLgcjPJWjais6KPJQq3gQ/88AY6BXoTX+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==}
     dev: true
 
-  /@oclif/parser/3.8.9:
-    resolution: {integrity: sha512-1j/kThdse7yHQz6+c3v8RA1I3gD6+SGt2O7IAb/MAMoxqyBrFQDabQHH2UU4eVFGMLN7U91AiYJp11zJ9LcQAg==}
+  /@oclif/parser/3.8.10:
+    resolution: {integrity: sha512-J4l/NcnfbIU84+NNdy6bxq9yJt4joFWNvpk59hq+uaQPUNtjmNJDVGuRvf6GUOxHNgRsVK1JRmd/Ez+v7Z9GqQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/errors': 1.3.6
       '@oclif/linewrap': 1.0.0
       chalk: 4.1.2
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /@oclif/plugin-help/3.3.1:
     resolution: {integrity: sha512-QuSiseNRJygaqAdABYFWn/H1CwIZCp9zp/PLid6yXvy6VcQV7OenEFF5XuYaCvSARe2Tg9r8Jqls5+fw1A9CbQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@oclif/command': 1.8.20
+      '@oclif/command': 1.8.22
       '@oclif/config': 1.18.2
       '@oclif/errors': 1.3.5
-      '@oclif/help': 1.0.4
+      '@oclif/help': 1.0.5
       chalk: 4.1.2
       indent-string: 4.0.0
       lodash: 4.17.21
@@ -1953,8 +1963,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lz-string/1.4.4:
-    resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
+  /lz-string/1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
     dev: true
 
@@ -2680,12 +2690,12 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-to-zod/1.13.1:
-    resolution: {integrity: sha512-C8eD8HbNHysoFPJnVu3ix6S9lugEQ5IPOGx9a4CiY5q4jDZGc+Pgi96fyPSTSmEpHYni6EFN/uzHmIvpxeFFLA==}
+  /ts-to-zod/2.0.1:
+    resolution: {integrity: sha512-eL0kWnPC2vFnis/bgHrNHMfGCTBa2fwBJoPRuzhpIHDAzvVuAuET9R8i5pEa6UPemV4D+v/Gv+Ru2NZwHxHddQ==}
     hasBin: true
     dependencies:
-      '@oclif/command': 1.8.20
-      '@oclif/config': 1.18.6
+      '@oclif/command': 1.8.22
+      '@oclif/config': 1.18.8
       '@oclif/plugin-help': 3.3.1
       '@typescript/vfs': 1.4.0
       async: 3.2.4
@@ -2694,7 +2704,7 @@ packages:
       fs-extra: 9.1.0
       inquirer: 8.2.5
       lodash: 4.17.21
-      lz-string: 1.4.4
+      lz-string: 1.5.0
       ora: 5.4.1
       prettier: 2.2.1
       rxjs: 7.6.0
@@ -2703,7 +2713,7 @@ packages:
       tslib: 2.4.1
       tsutils: 3.21.0_typescript@4.9.5
       typescript: 4.9.5
-      zod: 3.20.2
+      zod: 3.21.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2714,6 +2724,10 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+
+  /tslib/2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
+    dev: true
 
   /tsup/6.6.0_typescript@4.9.5:
     resolution: {integrity: sha512-HxZE7Hj5yNxLFftCXdcJ+Jsax8dI4oKb0bt8fIvd1g/W0FZ46sU1pFBVo15WpOERFcEMH7Hykey/Q+hKO4s9RQ==}
@@ -3089,19 +3103,5 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod-fetch/0.1.0:
-    resolution: {integrity: sha512-+1M/rSG7ogaewYhaPhoZWAG19H3cjNyiM/4xVOYyYUYrSXlkeCXQauMtEnCmC6wSpJlRiV4G3vWOxeC3148O2A==}
-    dev: false
-
-  /zod-to-ts/1.1.2_p5jgycp7euppyerdfacwyih2x4:
-    resolution: {integrity: sha512-IZdM0Ga1l/vQnrNy63aV3qsLNchD0aUYZEtXcyt8A3xA7+erFO0zeImEcUH5qNLA6tXDTjRpcWp0paoVoH/D0A==}
-    peerDependencies:
-      typescript: ^4.9.4
-      zod: ^3
-    dependencies:
-      typescript: 4.9.5
-      zod: 3.20.2
-    dev: false
-
-  /zod/3.20.2:
-    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
