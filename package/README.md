@@ -145,6 +145,8 @@ albums_recorded: string;
 - [ ] find a way to make it automatically show the appropriate types (e.g. like with http. Must somehow print the constants and export them).
 - [x] make a monorepo showing examples of the typescript typefile and adapters
       It will be like a compiler:
+- [ ] convert to runtypes
+- [ ] use generate runtypes library to generate the types (i.e. the codegen stage) https://github.com/cobraz/generate-runtypes#readme
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)
