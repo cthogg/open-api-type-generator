@@ -1,9 +1,11 @@
+import { RootType } from "generate-runtypes";
 import rt from "runtypes";
 import { openApiArraySchema, openApiSchema } from "./openApiTypes";
 
 export type Endpoint = {
   [key: string]: {
     responseBody: rt.Runtype;
+    responseBodyTwo: RootType;
   };
 };
 

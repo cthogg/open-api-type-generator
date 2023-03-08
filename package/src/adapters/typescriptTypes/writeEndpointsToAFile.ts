@@ -19,26 +19,12 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
   stringArray.push(EOL);
 
   endpoints.forEach((_endpoint, i) => {
-    console.log("_endpoint", _endpoint);
-    Object.keys(_endpoint).map((endpoint) => {
-      const identifier = endpoint;
-
+    Object.keys(_endpoint).map((endpointName) => {
+      const identifier = endpointName;
+      const responseBodyTwo = _endpoint[endpointName].responseBodyTwo;
       const name = convertToDTOName(identifier);
       //FIXME: need to find a way to generate this from runtypes
-      const sourceCode = generateRuntypes([
-        {
-          name,
-          type: {
-            kind: "record",
-            fields: [
-              { name: "artist_name", type: { kind: "string" } },
-              { name: "artist_genre", type: { kind: "string" } },
-              { name: "albums_recorded", type: { kind: "number" } },
-              { name: "username", type: { kind: "string" } },
-            ],
-          },
-        },
-      ]);
+      const sourceCode = generateRuntypes([responseBodyTwo]);
       stringArray.push(sourceCode);
       // const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
       // const typeAlias = createTypeAlias(node, name, endpoint);

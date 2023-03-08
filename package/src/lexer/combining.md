@@ -60,3 +60,20 @@ generateRuntypes([
   },
 ]);
 ```
+
+````ts
+ {
+          name: 'Artists',
+          type: {
+            kind: "record",
+            fields: [
+              { name: "artist_name", type: { kind: "string" } },
+              { name: "artist_genre", type: { kind: "string" } },
+              { name: "albums_recorded", type: { kind: "number" } },
+              { name: "username", type: { kind: "string" } },
+            ],
+          },
+        },
+
+        ```
+````
