@@ -23,12 +23,9 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
       const identifier = endpointName;
       const responseBodyTwo = _endpoint[endpointName].responseBodyTwo;
       const name = convertToDTOName(identifier);
-      //FIXME: need to find a way to generate this from runtypes
       const sourceCode = generateRuntypes([responseBodyTwo]);
       stringArray.push(sourceCode);
-      // const { node } = zodToTs(_endpoint[endpoint].responseBody, name);
-      // const typeAlias = createTypeAlias(node, name, endpoint);
-      // stringArray.push(printNode(typeAlias));
+
       //push a new line to string array
       stringArray.push(EOL);
       stringArray.push(EOL);
