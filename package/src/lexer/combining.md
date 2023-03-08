@@ -1,3 +1,6 @@
+Can you generate a typescript function which will convert the following runtype into the code of the generate-runtypes package?
+
+```ts
 import * as r from "runtypes";
 
 const infoSchema = r.Record({
@@ -39,6 +42,21 @@ export const openApiSchema = r.Record({
     r.String.withConstraint((s) => s.startsWith("/"))
   ),
 });
+```
 
-// input is the openAPI schema
-// output is the generate runtype
+```ts
+generateRuntypes([
+  {
+    name: "Artist",
+    type: {
+      kind: "record",
+      fields: [
+        { name: "artist_name", type: { kind: "string" } },
+        { name: "artist_genre", type: { kind: "string" } },
+        { name: "albums_recorded", type: { kind: "number" } },
+        { name: "username", type: { kind: "string" } },
+      ],
+    },
+  },
+]);
+```

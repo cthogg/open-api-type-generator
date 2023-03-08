@@ -5,6 +5,7 @@ specifiers:
   '@types/node': ^18.11.6
   change-case: ^4.1.2
   esbuild: ^0.14.38
+  generate-runtypes: ^3.1.1
   isomorphic-fetch: ^3.0.0
   msw: 1.0.1
   openapi-types: ^12.1.0
@@ -24,6 +25,7 @@ specifiers:
 dependencies:
   '@apidevtools/swagger-parser': 10.1.0_openapi-types@12.1.0
   change-case: 4.1.2
+  generate-runtypes: 3.1.1
   isomorphic-fetch: 3.0.0
   msw: 1.0.1_typescript@4.9.5
   openapi-types: 12.1.0
@@ -1578,6 +1580,16 @@ packages:
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
 
+  /generate-runtypes/3.1.1:
+    resolution: {integrity: sha512-Gy9gbiOuFNsM4+vwexdkcDaBuoJUv53TaJx9UKrNlS+Dod2pp4E+DXP84/0ZS0Q4Rv99RAzSx95KuPjPY16gJQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      jsesc: 3.0.2
+      prettier: 2.8.1
+      runtypes: 6.6.0
+      typescript: 4.3.5
+    dev: false
+
   /get-caller-file/2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -1874,6 +1886,12 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
+    dev: false
+
+  /jsesc/3.0.2:
+    resolution: {integrity: sha512-xKqzzWXDttJuOcawBt4KnKHHIf5oQ/Cxax+0PWFG+DFDgHNAdi+TXECADI+RYiFUMmx8792xsMbbgXj4CwnP4g==}
+    engines: {node: '>=6'}
+    hasBin: true
     dev: false
 
   /json-schema-traverse/1.0.0:
@@ -2280,7 +2298,6 @@ packages:
     resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -2787,6 +2804,12 @@ packages:
   /type-fest/2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+    dev: false
+
+  /typescript/4.3.5:
+    resolution: {integrity: sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: false
 
   /typescript/4.9.5:
