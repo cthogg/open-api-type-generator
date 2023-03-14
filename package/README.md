@@ -147,8 +147,9 @@ albums_recorded: string;
       It will be like a compiler:
 - [x] convert to runtypes
 - [x] use generate runtypes library to generate the types (i.e. the codegen stage) https://github.com/cobraz/generate-runtypes#readme
-- [ ] make the build process seemless. e.g. so that it builds the runtype files then builds. (at the moment i need to run the test which is not good).
+- [x] make the build process seemless. e.g. so that it builds the runtype files then builds. (at the moment i need to run the test which is not good).
 - [ ] tidy up the types and testing for the current type which is not? an array.
+- [ ] prettify outputted file
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)

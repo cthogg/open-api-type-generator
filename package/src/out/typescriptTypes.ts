@@ -13,3 +13,5 @@ type GetArtistsDTO = rt.Static<typeof getArtistsDTO>;
 
 
 export {GetArtistsDTO}
+
+export const endpointRegistry = {...getArtistsDTO,} as const;
