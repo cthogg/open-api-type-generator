@@ -4,7 +4,7 @@ import {
   RecordType,
   SimpleType,
 } from "generate-runtypes/dist/types";
-import rt from "runtypes";
+import * as rt from "runtypes";
 import { Endpoint, OpenApi, SchemaArray } from "./types";
 
 type Runtype = rt.Runtype;
