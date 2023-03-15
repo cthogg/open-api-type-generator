@@ -1,3 +1,4 @@
+//FIXME: rename to allEndpoints
 import { endpointRegistryTwo } from "./typescriptTypes";
 
 const endpointRegistry = endpointRegistryTwo;

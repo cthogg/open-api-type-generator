@@ -2,7 +2,7 @@ import { sentenceCase, camelCase } from "change-case";
 import * as fs from "fs";
 import { generateRuntypes } from "generate-runtypes";
 import { EOL } from "os";
-import { Endpoint } from "../../lexer/types";
+import { Endpoint, EndpointKey } from "../../lexer/types";
 
 function convertToDTOName(str: string): {
   typeName: `${string}DTO`;
@@ -29,20 +29,15 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
   stringArray.push(EOL);
 
   endpoints.forEach((_endpoint) => {
-    Object.keys(_endpoint).map((endpointName) => {
-      //FIXME: create a type which has is of GET /artists
+    Object.keys(_endpoint).map((endpointName: EndpointKey) => {
       const identifier = endpointName;
-      console.log("identifier", identifier);
       const responseBodyTwo = _endpoint[endpointName].responseBodyTwo;
-      console.log("responseBodyTwo", responseBodyTwo);
       const {
         typeName: name,
         constantName,
         runtypeName,
       } = convertToDTOName(identifier);
-      console.log("constantName", constantName);
       const sourceCode = generateRuntypes([responseBodyTwo]);
-      console.log("sourceCode", sourceCode);
       stringArray.push(sourceCode);
       stringArray.push(`const ${constantName} = {
       "${identifier}": { 
