@@ -11,7 +11,8 @@
     "build": "pnpm run runFile && tsup src/index.ts --format cjs,esm --dts && prettier --write src/out/typescriptTypes.ts",
     "tsc": "tsc",
     "runFile": "ts-node src/core/script.ts",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "prettier": "prettier --write src/"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
