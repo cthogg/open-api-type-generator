@@ -154,6 +154,7 @@ albums_recorded: string;
 - [ ] install prettier and get the output.
 - [ ] use Github as a CI (with proper releases).
 - [ ] make documentation. (Documentation driven development).
+- [ ] make it as a basic proof of concept, then I can add to it afterwards.
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)
