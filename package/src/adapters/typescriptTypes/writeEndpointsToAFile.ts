@@ -5,15 +5,17 @@ import { EOL } from "os";
 import { Endpoint } from "../../lexer/types";
 
 function convertToDTOName(str: string): {
-  dtoName: string;
-  constantName: string;
+  typeName: `${string}DTO`;
+  constantName: `${string}DTOObject`;
+  runtypeName: `${string}DTO`;
 } {
   const [httpMethod, endpoint] = str.split(" ");
   const endpointParts = endpoint.split("/");
   const dtoName = endpointParts[1];
   return {
-    dtoName: `${sentenceCase(httpMethod)}${sentenceCase(dtoName)}DTO`,
-    constantName: `${camelCase(httpMethod)}${sentenceCase(dtoName)}DTO`,
+    typeName: `${sentenceCase(httpMethod)}${sentenceCase(dtoName)}DTO`,
+    runtypeName: `${camelCase(httpMethod)}${sentenceCase(dtoName)}DTO`,
+    constantName: `${camelCase(httpMethod)}${sentenceCase(dtoName)}DTOObject`,
   };
 }
 
@@ -28,15 +30,24 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
 
   endpoints.forEach((_endpoint, i) => {
     Object.keys(_endpoint).map((endpointName) => {
+      //FIXME: create a type which has is of GET /artists
       const identifier = endpointName;
       console.log("identifier", identifier);
       const responseBodyTwo = _endpoint[endpointName].responseBodyTwo;
       console.log("responseBodyTwo", responseBodyTwo);
-      const { dtoName: name, constantName } = convertToDTOName(identifier);
+      const {
+        typeName: name,
+        constantName,
+        runtypeName,
+      } = convertToDTOName(identifier);
       console.log("constantName", constantName);
       const sourceCode = generateRuntypes([responseBodyTwo]);
+      console.log("sourceCode", sourceCode);
       stringArray.push(sourceCode);
-
+      stringArray.push(`const ${constantName} = {
+      "${identifier}": { 
+        responseBody: ${runtypeName}}
+      }`);
       //push a new line to string array
       stringArray.push(EOL);
       stringArray.push(EOL);
@@ -49,8 +60,8 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
 
   stringArray.push(EOL);
 
-  stringArray.push(`export const endpointRegistry = {`);
-  stringArray.push(`...${constantNames.join(", ")},`);
+  stringArray.push(`export const endpointRegistryTwo = {`);
+  stringArray.push(`...${constantNames.join(", ")}`);
   stringArray.push(`} as const;`);
 
   return stringArray;

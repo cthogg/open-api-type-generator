@@ -10,7 +10,12 @@ const getArtistsDTO = rt.Record({
 });
 
 type GetArtistsDTO = rt.Static<typeof getArtistsDTO>;
+const getArtistsDTOObject = {
+  "GET /artists": {
+    responseBody: getArtistsDTO,
+  },
+};
 
 export { GetArtistsDTO };
 
-export const endpointRegistry = { ...getArtistsDTO } as const;
+export const endpointRegistryTwo = { ...getArtistsDTOObject } as const;

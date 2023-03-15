@@ -151,7 +151,7 @@ albums_recorded: string;
 - [ ] tidy up the types and testing for the current type which is not? an array.
 - [ ] prettify outputted file
 - [ ] install linter
-- [ ] install prettier and get the output.
+- [x] install prettier and get the output.
 - [ ] use Github as a CI (with proper releases).
 - [ ] make documentation. (Documentation driven development).
 - [ ] make it as a basic proof of concept, then I can add to it afterwards.

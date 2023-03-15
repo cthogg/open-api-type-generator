@@ -1,7 +1,7 @@
-import { endpointRegistry as mockEndpointRegistry } from "../mocks/mockRegistry";
+import { endpointRegistryTwo } from "./typescriptTypes";
 
-const endpointRegistry = mockEndpointRegistry;
+const endpointRegistry = endpointRegistryTwo;
 
-export type EndpointRegistry = typeof mockEndpointRegistry;
-export type RegisteredHttpEndpoint = keyof typeof mockEndpointRegistry;
+export type EndpointRegistry = typeof endpointRegistryTwo;
+export type RegisteredHttpEndpoint = keyof typeof endpointRegistryTwo;
 export { endpointRegistry };
