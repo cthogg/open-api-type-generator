@@ -16,8 +16,8 @@ export function useHttpQuery<
     rt.Static<EndpointRegistry[T]["responseBody"]>,
     unknown,
     TData
-  > = {},
-  token: string
+  > = {}
+  // token: string
 ): UseQueryResult<TData, unknown> {
   return useQuery({
     queryKey: [endpoint],

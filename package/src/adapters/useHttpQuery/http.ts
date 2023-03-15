@@ -54,7 +54,7 @@ function parseContent(response: Response) {
   }
 }
 
-async function defaultResponseHandler(response: Response, endpoint: string) {
+async function defaultResponseHandler(response: Response) {
   await assertSuccessfulResponse(response);
   return await parseContent(response);
 }
@@ -84,7 +84,7 @@ export async function http<T extends RegisteredHttpEndpoint>(
     headers,
   });
 
-  const responseBody = await defaultResponseHandler(response, endpoint);
+  const responseBody = await defaultResponseHandler(response);
 
   assertResponseBodyShape({
     runtype: endpointDef.responseBody,

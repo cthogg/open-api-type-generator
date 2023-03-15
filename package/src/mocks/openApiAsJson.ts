@@ -1,3 +1,4 @@
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 const exampleFileAsJson = {
   openapi: "3.0.0",
   info: {

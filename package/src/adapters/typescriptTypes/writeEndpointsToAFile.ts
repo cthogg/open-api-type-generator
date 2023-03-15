@@ -28,7 +28,7 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
   stringArray.push(EOL);
   stringArray.push(EOL);
 
-  endpoints.forEach((_endpoint, i) => {
+  endpoints.forEach((_endpoint) => {
     Object.keys(_endpoint).map((endpointName) => {
       //FIXME: create a type which has is of GET /artists
       const identifier = endpointName;
