@@ -150,6 +150,10 @@ albums_recorded: string;
 - [x] make the build process seemless. e.g. so that it builds the runtype files then builds. (at the moment i need to run the test which is not good).
 - [ ] tidy up the types and testing for the current type which is not? an array.
 - [ ] prettify outputted file
+- [ ] install linter
+- [ ] install prettier and get the output.
+- [ ] use Github as a CI (with proper releases).
+- [ ] make documentation. (Documentation driven development).
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)

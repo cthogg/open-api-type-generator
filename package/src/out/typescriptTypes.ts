@@ -11,7 +11,6 @@ const getArtistsDTO = rt.Record({
 
 type GetArtistsDTO = rt.Static<typeof getArtistsDTO>;
 
+export { GetArtistsDTO };
 
-export {GetArtistsDTO}
-
-export const endpointRegistry = {...getArtistsDTO,} as const;
+export const endpointRegistry = { ...getArtistsDTO } as const;

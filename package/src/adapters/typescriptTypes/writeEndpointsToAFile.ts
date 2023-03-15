@@ -49,10 +49,6 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
 
   stringArray.push(EOL);
 
-  // export const endpointRegistry = {
-  //   ...getArtistsDTO,
-  // } as const;
-
   stringArray.push(`export const endpointRegistry = {`);
   stringArray.push(`...${constantNames.join(", ")},`);
   stringArray.push(`} as const;`);
