@@ -1,8 +1,5 @@
-//FIXME: rename to allEndpoints
-import { endpointRegistryTwo } from "./typescriptTypes";
+import { endpointRegistry } from "./typescriptTypes";
 
-const endpointRegistry = endpointRegistryTwo;
-
-export type EndpointRegistry = typeof endpointRegistryTwo;
-export type RegisteredHttpEndpoint = keyof typeof endpointRegistryTwo;
+export type EndpointRegistry = typeof endpointRegistry;
+export type RegisteredHttpEndpoint = keyof typeof endpointRegistry;
 export { endpointRegistry };

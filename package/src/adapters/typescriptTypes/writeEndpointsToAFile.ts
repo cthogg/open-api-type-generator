@@ -57,7 +57,7 @@ export const generateStrings = (endpoints: Endpoint[]): string[] => {
 
   lines.push(EOL);
 
-  lines.push(`export const endpointRegistryTwo = {`);
+  lines.push(`export const endpointRegistry = {`);
   lines.push(`...${endpointNames.join(", ")}`);
   lines.push(`} as const;`);
 
