@@ -3,10 +3,8 @@ import rt from "runtypes";
 import { openApiArraySchema, openApiSchema } from "./openApiTypes";
 
 export type Endpoint = {
-  //FIXME: create a type which has is of GET /artists
   [key: EndpointKey]: {
-    responseBody: rt.Runtype;
-    responseBodyTwo: RootType;
+    responseBody: RootType;
   };
 };
 export type EndpointKey = `GET /${string}`;

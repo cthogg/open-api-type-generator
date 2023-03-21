@@ -9,13 +9,10 @@ const getArtistsDTO = rt.Record({
   username: rt.String,
 });
 
-type GetArtistsDTO = rt.Static<typeof getArtistsDTO>;
 const getArtistsDTOObject = {
   "GET /artists": {
     responseBody: getArtistsDTO,
   },
 };
-
-export { GetArtistsDTO };
 
 export const endpointRegistryTwo = { ...getArtistsDTOObject } as const;

@@ -4,21 +4,7 @@ import {
   RecordType,
   SimpleType,
 } from "generate-runtypes/dist/types";
-import * as rt from "runtypes";
 import { Endpoint, OpenApi, SchemaArray } from "./types";
-
-type Runtype = rt.Runtype;
-
-const getRuntype = (type: string): Runtype => {
-  switch (type) {
-    case "string":
-      return rt.String;
-    case "integer":
-      return rt.Number;
-    default:
-      return rt.Unknown;
-  }
-};
 
 const getRootType = (type: string) => {
   const stringType: SimpleType = { kind: "string" };
@@ -33,20 +19,6 @@ const getRootType = (type: string) => {
     default:
       return unknownType;
   }
-};
-
-const generateResponseBodyOfArray = (schema: SchemaArray): Runtype => {
-  const listOfProperties = schema.items.properties;
-  const listOfPropertiesKeys = Object.keys(listOfProperties).map((key) => {
-    const property = listOfProperties[key];
-    return {
-      [key]: getRuntype(property.type),
-    };
-  });
-  const mergedListOfPropertyKeys = listOfPropertiesKeys.reduce((acc, curr) => {
-    return { ...acc, ...curr };
-  });
-  return rt.Record(mergedListOfPropertyKeys);
 };
 
 const generateRootTypeOfArray = (schema: SchemaArray): RecordType => {
@@ -81,8 +53,7 @@ export const generateEndpoints = (spec: OpenApi): Endpoint[] => {
     const fullPath = `GET ${path}`;
     const endpoint: Endpoint = {
       [fullPath]: {
-        responseBody: generateResponseBodyOfArray(schema),
-        responseBodyTwo: {
+        responseBody: {
           name: convertToDTOName(fullPath),
           type: generateRootTypeOfArray(schema),
         },
