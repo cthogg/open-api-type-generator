@@ -155,6 +155,7 @@ albums_recorded: string;
 - [ ] use Github as a CI (with proper releases).
 - [ ] make documentation. (Documentation driven development).
 - [ ] make it as a basic proof of concept, then I can add to it afterwards.
+- [ ] make a monorepo with https://github.com/vercel/turbo/blob/main/examples/kitchen-sink/turbo.json and https://www.youtube.com/watch?v=mxLLIwZ93nY
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)
