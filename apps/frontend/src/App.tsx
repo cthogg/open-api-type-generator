@@ -1,4 +1,4 @@
-import { useHttpQuery } from "open-api-type-generator";
+import { useHttpQuery } from "../../../packages/open-api-type-generator/src";
 import "./App.css";
 
 if (process.env.NODE_ENV === "development") {
