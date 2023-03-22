@@ -6,6 +6,7 @@
       },
       "lint": {},
       "prettier": {},
+      "dev": {},
       "test": {
         "outputs": ["coverage/**"],
         "dependsOn": []
