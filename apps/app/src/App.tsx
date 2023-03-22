@@ -1,6 +1,12 @@
 import { useHttpQuery } from "open-api-type-generator";
 import "./App.css";
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = await import("./mocks/browser");
+
+  worker.start();
+}
+
 function App() {
   const { data, error, isError, isLoading } = useHttpQuery(
     "GET /artists",

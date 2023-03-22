@@ -75,7 +75,7 @@ export async function http<T extends RegisteredHttpEndpoint>(
   const endpointDef = endpointRegistry[endpoint];
 
   const method = "GET";
-  const url = "http://localhost:8080/artists";
+  const url = "http://localhost:8088/artists";
 
   const headers = {};
 
