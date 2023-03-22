@@ -6,10 +6,11 @@
   "types": "./src/index.ts",
   "private": true,
   "scripts": {
-    "test": "vitest",
+    "test:dev": "vitest",
     "test:ci": "vitest run",
     "build": "pnpm run runFile && tsup src/index.ts --format cjs,esm --dts && prettier --write src/out/typescriptTypes.ts",
     "tsc": "tsc",
+    "test": "vitest run",
     "runFile": "ts-node src/core/script.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write src/"

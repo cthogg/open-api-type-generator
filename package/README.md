@@ -155,7 +155,9 @@ albums_recorded: string;
 - [ ] use Github as a CI (with proper releases).
 - [ ] make documentation. (Documentation driven development).
 - [ ] make it as a basic proof of concept, then I can add to it afterwards.
-- [ ] make a monorepo with https://github.com/vercel/turbo/blob/main/examples/kitchen-sink/turbo.json and https://www.youtube.com/watch?v=mxLLIwZ93nY
+- [x] make a monorepo with https://github.com/vercel/turbo/blob/main/examples/kitchen-sink/turbo.json and https://www.youtube.com/watch?v=mxLLIwZ93nY
+- [x] install prettier and eslint in the other repos as well
+- [x] split into packages and app so i can use the following for a workspace https://github.com/vercel/turbo/blob/main/examples/kitchen-sink/pnpm-workspace.yaml
 
 1. Parsing / Lexing (YAML.load)
 2. AST manipulation (Array<Endpoint>)

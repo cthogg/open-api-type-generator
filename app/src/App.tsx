@@ -4,8 +4,8 @@ import "./App.css";
 function App() {
   const { data, error, isError, isLoading } = useHttpQuery(
     "GET /artists",
-    { retry: 1 },
-    "token"
+    { retry: 1 }
+    // "token"
   );
   console.log(error);
   return (
